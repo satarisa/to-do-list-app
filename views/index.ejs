@@ -1,0 +1,75 @@
+<div class="row">
+    <header class="pb-3 pt-3 mb-4 border-bottom">
+        <h1 class="display-5 fw-bold">To Do List App</h1>
+    </header>
+
+    <div class="col-md-4">
+        <div class="h-100 p-3 text-white bg-dark rounded-3">
+          <div class="container-fluid py-5">
+            <img src="https://placeimg.com/150/150/tech" alt="AboutME" width="150px" class="rounded-circle img-thumbnail">
+            <h2 class="fw-bold mt-2"><%= session_storage.name %></h2>
+            <h4 class="fw-light"><%= session_storage.email %></h4>
+            <a href="/logout" class="btn btn-outline-light btn-sm">Logout</a>
+          </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-8">
+        <div class="h-100 p-2 bg-info rounded-3">
+            <div class="container-fluid py-3">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-outline-light float-end mt-2" data-bs-toggle="modal" data-bs-target="#addModal">
+                    <i class="bi bi-file-earmark-plus"></i> Add more
+                </button>   
+                <p class="display-6">To do:</p>
+                <% if (list.length < 1) { %>
+                    <div class="alert alert-danger" role="alert">
+                        There is nothing to do!
+                    </div>
+                <% } else { %>
+                    <ul class="list-group">
+                        <% list.forEach(l => { %>
+                            <li class="list-group-item">
+                                <form action="/home?_method=DELETE" method="post" class="d-inline">
+                                    <input type="hidden" name="_id" value="<%= l._id %>">
+                                    <button type="submit" class="btn btn-outline-success btn-sm rounded-circle float-start me-3"><i class="bi bi-check-circle"></i></button>
+                                </form>
+                                <%= l.content %> 
+                            </li>
+                        <% }) %>
+                    </ul>
+                <% } %> 
+            </div>
+        </div>
+    </div>
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title display-6" id="addModalLabel">Add new list</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form method="post" action="/home">
+                <div class="mb-3">
+                    <input type="hidden" name="userid" value="<%= session_storage._id %>">
+                    <input type="text" class="form-control" id="content" name="content" placeholder="What to do?" required>
+                </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+      </div>
+    </div>
+  </div>
+  
+      <footer class="pt-3 mt-4 text-muted border-top">
+        &copy; 2022 by Tarisa
+      </footer>
+</div>

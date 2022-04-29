@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+        <div class="col-md-4">
+            <% if (typeof errors !== 'undefined') { %>
+                <% errors.forEach(error => { %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= error.msg %> 
+                    </div>
+                <% }) %>
+            <% } %>
+        </div>
+        <div class="col-md-7 py-5 pb-4 bg-light rounded-3">
+            <div class="col-md-5 mx-auto">
+                <div class="display-6 text-center">To Do List App</div>
+                <hr>
+                <form action="/register" method="post">
+                    <div class="mb-2">
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                    </div>
+                    <div class="mb-2">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="mb-2">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Full Name" required>
+                    </div>
+                    <div class="mb-2">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" id="re-password" name="re-password" placeholder="Re-enter Password" required>
+                    </div>
+                    <div class="d-grid gap-2 mx-auto">
+                        <button type="submit" class="btn btn-success btn-block">SIGN UP</button>
+                    </div>
+                </form>
+
+                <p class="fs-6 fw-lighter text-center mt-2">Already have account? <a href="/login">Login</a> here.</p>
+            </div>
+        </div>
+    </div>
+</div>

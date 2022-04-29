@@ -1,0 +1,11 @@
+svg {
+    display: inline-block;
+    position: absolute;
+    bottom: 0%;
+  }
+  .container {
+    position: relative;
+    width: 100%;
+    vertical-align: middle;
+    overflow: hidden;
+  }
